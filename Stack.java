@@ -3,28 +3,50 @@ public class Stack
     //pointer to first node
     private Node first;
 
+    private int index;
+
+    /**
+     * Class of nodes
+     */
     private class Node
     {
         private String item;
         private Node next;
     }
 
-    //returns if first is pointing to anything
+    /**
+     * Returns whether or not the first node is empty
+     * @return 
+     */
     private boolean isEmpty()
     {
         return first == null;
     }
 
-    //insert node to the front
+    /**
+     * insert new node to front of stack
+     * @param item
+     */
     public void push (String item)
     {
+        index++;
+        
+        //bump first node down to second
         Node second = first;
+
+        //create new node with new item
         first = new Node();
         first.item = item;
+
+        //set new node to point to old first (now second node)
         first.next = second;
     }
-
-    //remove object first is pointing to and return the item stored inside
+    
+    /**
+     * Remove first object (object from top of stack)
+     * 
+     * @return object previously stored in first node
+     */
     public String pop()
     {
         String item = first.item;
@@ -32,7 +54,10 @@ public class Stack
         return item;
     }
 
-    //return value stored at first pointer
+    /**
+     * return falue stored in first pointer
+     * @return
+     */
     public String peek()
     {
         return first.item;
