@@ -3,7 +3,7 @@ import greenfoot.*;
 public class MenuScreen extends World
 {
     Queue<Face> avatars;      //queue for all the faces
-    Button changeAvatar, toInstruct;      //button that changes avatar
+    Button changeAvatar, toInstruct, toScore;      //button that changes avatar
     Face removed;             //face variable that stores face being removed and displayed
     
     public MenuScreen()
@@ -13,9 +13,15 @@ public class MenuScreen extends World
         
         //add buttons for avatar and to go to instructions screen
         changeAvatar = new Button("buttonLong_blue.png", 1);
-        addObject(changeAvatar, getWidth()/2, getHeight() / 2 + 50);
+        addObject(changeAvatar, getWidth()/2, getHeight() / 2);
         toInstruct = new Button("buttonLong_beige.png", 2);
         addObject(toInstruct, 450, 350);
+        toScore = new Button("buttonLong_beige.png", 5);
+        addObject(toScore, 150,350 );
+        
+        //add labels
+        addObject((new Label("Instructions", 25)), 450, 310);
+        addObject((new Label("High Score", 25)), 150, 310);
 
         //add avatars to world(image)
         avatars = new Queue<>();
@@ -46,6 +52,10 @@ public class MenuScreen extends World
             {
                 Greenfoot.setWorld(new InstructionScreen());
                 
+            }
+            else if(toScore.getButton() == 5)
+            {
+                Greenfoot.setWorld(new HighScoreScreen());
             }
         }
         
