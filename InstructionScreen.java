@@ -17,7 +17,7 @@ public class InstructionScreen extends World
         addObject(prevScreen, 150,350);
 
         //add screen number label
-        addObject(screens[index], getHeight() / 2, getWidth() / 2);
+        addObject(screens[index], getWidth() / 2, getHeight() / 2);
     }
 
     public void act()
@@ -47,7 +47,7 @@ public class InstructionScreen extends World
 
             //remove previous lable and add new one
             removeObjects(getObjects(Label.class));
-            addObject(screens[index], getHeight() / 2, getWidth() / 2);
+            addObject(screens[index], getWidth() / 2, getHeight() / 2);
         }
     }
 }
