@@ -2,29 +2,36 @@ import greenfoot.*;
 
 public class InstructionScreen extends World
 {
-    Label screens[] = {new Label("Screen 0", 40), new Label("Screen 1", 40)};
-    public static int index;
+    public static Label screens[] = {new Label("Screen 0", 40), new Label("Screen 1", 40), new Label("Screen 2", 40)};
+    public static int index = 0;
+    Button nextScreen, prevScreen;
 
     public InstructionScreen()
     {
         super(600,400,1);
         
-        //create array of labels
-        screens = new Label[1];
-
         //add buttons to screen
-        Button nextScreen = new Button(1);
+        nextScreen = new Button(1);
         addObject(nextScreen, 450, 350);
-
-        Button prevScreen = new Button(-1);
+        prevScreen = new Button(-1);
         addObject(prevScreen, 150,350);
+
+        //add screen number label
+        addObject(screens[index], getHeight() / 2, getWidth() / 2);
     }
 
     public void act()
     {
+        //update label if mouse is clicked
         if(Greenfoot.mouseClicked(null))
         {
-            addObject(screens[index % 2], getHeight() / 2, getWidth() / 2);
+            //check for changes in index for either buttons
+            nextScreen.updateIndex();
+            prevScreen.updateIndex();
+
+            //remove previous lale and add new one
+            removeObjects(getObjects(Label.class));
+            addObject(screens[index], getHeight() / 2, getWidth() / 2);
         }
     }
 }

@@ -3,8 +3,6 @@ public class Stack
     //pointer to first node
     private Node first;
 
-    private int index;
-
     /**
      * Class of nodes
      */
@@ -28,9 +26,7 @@ public class Stack
      * @param item
      */
     public void push (String item)
-    {
-        index++;
-        
+    {        
         //bump first node down to second
         Node second = first;
 
