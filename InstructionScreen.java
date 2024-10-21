@@ -11,9 +11,9 @@ public class InstructionScreen extends World
         super(600,400,1);
         
         //add buttons to screen
-        nextScreen = new Button(1);
+        nextScreen = new Button("buttonLong_beige.png",4 );
         addObject(nextScreen, 450, 350);
-        prevScreen = new Button(-1);
+        prevScreen = new Button("buttonLong_beige.png", 3);
         addObject(prevScreen, 150,350);
 
         //add screen number label
@@ -26,10 +26,26 @@ public class InstructionScreen extends World
         if(Greenfoot.mouseClicked(null))
         {
             //check for changes in index for either buttons
-            nextScreen.updateIndex();
-            prevScreen.updateIndex();
+            if(nextScreen.getButton() == 4)
+            {
+                index ++;
+            }
+            else if(prevScreen.getButton() == 3)
+            {
+                index --;
+            }
 
-            //remove previous lale and add new one
+            //cycle through if limits of array reached
+            if(index < 0)
+            {
+                index = 2;
+            }
+            else if(index > 2)
+            {
+                index = 0;
+            }
+
+            //remove previous lable and add new one
             removeObjects(getObjects(Label.class));
             addObject(screens[index], getHeight() / 2, getWidth() / 2);
         }
