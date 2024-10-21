@@ -42,10 +42,8 @@ public class Queue<Item>
         first = first.next;
         if(isEmpty())
         {
-
             last = null;
         }
-
         return item;
     }
 }
